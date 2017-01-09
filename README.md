@@ -65,7 +65,7 @@ promise = datacastle.send(data).then((response) => {
 })
 
 // Send multiple items
-data = [{some: 'data'}, some: 'otherdata']
+data = [{some: 'data'}, {some: 'otherdata'}]
 promise = datacastle.send(data).then((response) => {
   console.log(
     response.status, // 200
