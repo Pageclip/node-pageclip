@@ -1,0 +1,32 @@
+{
+  "name": "datacastle",
+  "version": "1.0.0",
+  "description": "JS Datacastle API client",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --require test/environment.js test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benogle/node-datacastle"
+  },
+  "keywords": [
+    "datacastle",
+    "form"
+  ],
+  "author": "Ben Ogle",
+  "license": "MIT",
+  "dependencies": {
+    "es6-promisify": "^5.0.0",
+    "js-base64": "^2.1.9",
+    "lodash": "^4.17.4",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "app-module-path": "^2.2.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
+  }
+}
