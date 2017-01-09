@@ -16,7 +16,7 @@ class DataCastle {
   }
 
   // Returns all items
-  get (bucketName) {
+  fetch (bucketName) {
     bucketName = this._getBucketName(bucketName)
     return this._request('GET', `/api/data/${bucketName}`)
   }

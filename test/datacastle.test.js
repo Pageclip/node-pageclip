@@ -23,9 +23,9 @@ describe("DataCastle.js", function () {
     })
   })
 
-  describe("::get()", function () {
+  describe("::fetch()", function () {
     it("returns the data for default bucket when no bucket specified", function () {
-      return datacastle.get().then((res) => {
+      return datacastle.fetch().then((res) => {
         expect(res.status).to.equal(200)
         expect(res.data).to.have.length(2)
         expect(res.bucket).to.equal('default')
@@ -39,7 +39,7 @@ describe("DataCastle.js", function () {
     })
 
     it("returns the data for specified bucket", function () {
-      return datacastle.get('abucket').then((res) => {
+      return datacastle.fetch('abucket').then((res) => {
         expect(res.status).to.equal(200)
         expect(res.data).to.have.length(2)
         expect(res.bucket).to.equal('abucket')
@@ -47,7 +47,7 @@ describe("DataCastle.js", function () {
     })
 
     it("returns the error when error", function () {
-      return datacastle.get('fail').then((res) => {
+      return datacastle.fetch('fail').then((res) => {
         expect(res.status).to.equal(400)
         expect(res.errors).to.have.length(1)
 
