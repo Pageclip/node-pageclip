@@ -16,7 +16,7 @@ let datacastle = new DataCastle(yourAPIKey)
 
 // Send an item up to DataCastle
 datacastle.send({some: 'data'}).then((response) => {
-  console.log(response.status, response.data) // => 200, 'ok'
+  console.log(response.status, response.data) // => 200, {items: ['def456...']}
 }).then(() => {
   // Fetch all items
   return datacastle.fetch()
@@ -60,7 +60,7 @@ promise = datacastle.send(data).then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'default'
-    response.data    // 'ok'
+    response.data    // {items: ['def456...']}
   )
 })
 
@@ -70,7 +70,7 @@ promise = datacastle.send(data).then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'default'
-    response.data    // 'ok'
+    response.data    // {items: ['def456...', 'hij789...']}
   )
 })
 
@@ -80,7 +80,7 @@ promise = datacastle.send('mailinglist', data).then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'mailinglist'
-    response.data    // 'ok'
+    response.data    // {items: ['def456...']}
   )
 })
 ```
@@ -105,7 +105,7 @@ promise = datacastle.fetch().then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'default'
-    response.data    // [{some: 'data'}]
+    response.data    // [{id: 'def456...', some: 'data'}]
   )
 })
 
@@ -114,7 +114,7 @@ promise = datacastle.fetch('mailinglist').then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'mailinglist'
-    response.data    // [{email: 'john@omgunicorns.com'}, ...]
+    response.data    // [{id: 'def456...', email: 'john@omgunicorns.com'}, ...]
   )
 })
 ```
