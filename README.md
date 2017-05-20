@@ -16,12 +16,12 @@ let pageclip = new PageClip(yourAPIKey)
 
 // Send an item up to PageClip
 pageclip.send({some: 'data'}).then((response) => {
-  console.log(response.status, response.data) // => 200, {items: [{some: 'data'}]}
+  console.log(response.status, response.data) // => 200, [{payload: {...}}]
 }).then(() => {
   // Fetch all items
   return pageclip.fetch()
 }).then((response) => {
-  console.log(response.status, response.data) // => 200, {items: [{some: 'data'}]}
+  console.log(response.status, response.data) // => 200, [{payload: {...}}]
 })
 ```
 
@@ -31,7 +31,7 @@ pageclip.send({some: 'data'}).then((response) => {
 
 Create a PageClip Object.
 
-* `apiKey` (String) - found in the web interface of PageClip. Note that `apiKey` must be the API specific key. Your public key will not work!
+* `apiKey` (String) - found in the web interface of PageClip. Note that `apiKey` must be the private API key. Your public siteKey will not work!
 
 ```js
 const PageClip = require('pageclip')
@@ -43,12 +43,12 @@ let pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
 Send data to PageClip.
 
 * `bucketName` (String; _optional_; default: 'default') - bucket to which you want to attach `data`.
-* `data` (Object or Array) - data you want to send up. If `Array`, it will treat each entry as an item.
+* `data` (Object or Array) - data you want to send up. When `Object` it will treat it as a single Item. If `Array`, it will treat each entry as an Item.
 * Returns a `Promise` with `Object` payload
   * `status` (Integer) - HTTP status code
   * `bucket` (String) - bucket name
   * `data` (Array of [Items](#items)) - Returns all items that were saved. See [Items](#items)
-  * `errors` (Array of Objects) - Will be present if the status code >= 400. See [Errors](#errors)
+  * `errors` (Array of Objects) - Will be present if `status >= 400`. See [Errors](#errors)
 
 ```js
 let pageclip, promise, data
@@ -94,7 +94,7 @@ Retrieve your data from PageClip. At this time, it returns all items in the buck
   * `status` (Integer) - HTTP status code
   * `bucket` (String) - bucket name
   * `data` (Array of [Items](#items)) - All Items in the bucket. See [Items](#items)
-  * `errors` (Array of Objects) - Will be present if the status code >= 400. See [Errors](#errors)
+  * `errors` (Array of Objects) - Will be present if `status >= 400`. See [Errors](#errors)
 
 ```js
 let pageclip, promise
