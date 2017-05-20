@@ -1,6 +1,6 @@
 # node-pageclip
 
-This is the official node.js API client for PageClip.
+This is the official node.js API client for [PageClip](https://pageclip.co).
 
 ## Usage
 
