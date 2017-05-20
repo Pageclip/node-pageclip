@@ -1,1 +1,1 @@
-module.exports = require('./src/datacastle.js')
+module.exports = require('./src/pageclip.js')

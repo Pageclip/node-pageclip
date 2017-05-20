@@ -1,25 +1,25 @@
-# node-datacastle
+# node-pageclip
 
-This is the official node.js API client for DataCastle.
+This is the official node.js API client for PageClip.
 
 ## Usage
 
 ```sh
-npm install --save datacastle
+npm install --save pageclip
 ```
 
 Basic usage:
 
 ```js
-const DataCastle = require('datacastle')
-let datacastle = new DataCastle(yourAPIKey)
+const PageClip = require('pageclip')
+let pageclip = new PageClip(yourAPIKey)
 
-// Send an item up to DataCastle
-datacastle.send({some: 'data'}).then((response) => {
+// Send an item up to PageClip
+pageclip.send({some: 'data'}).then((response) => {
   console.log(response.status, response.data) // => 200, {items: ['def456...']}
 }).then(() => {
   // Fetch all items
-  return datacastle.fetch()
+  return pageclip.fetch()
 }).then((response) => {
   console.log(response.status, response.data) // => 200, [{some: 'data'}]
 })
@@ -27,20 +27,20 @@ datacastle.send({some: 'data'}).then((response) => {
 
 ## API
 
-### DataCastle(apiKey)
+### PageClip(apiKey)
 
-Create a DataCastle Object.
+Create a PageClip Object.
 
-* `apiKey` (String) - found in the web interface of DataCastle. Note that `apiKey` must be the API specific key. Your public key will not work!
+* `apiKey` (String) - found in the web interface of PageClip. Note that `apiKey` must be the API specific key. Your public key will not work!
 
 ```js
-const DataCastle = require('datacastle')
-let datacastle = new DataCastle('abc123ABC123abc123abc123abc12345')
+const PageClip = require('pageclip')
+let pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
 ```
 
-### DataCastle::send([bucketName], data)
+### PageClip::send([bucketName], data)
 
-Send data to DataCastle.
+Send data to PageClip.
 
 * `bucketName` (String; _optional_; default: 'default') - bucket to which you want to attach `data`.
 * `data` (Object or Array) - data you want to send up. If `Array`, it will treat each entry as an item.
@@ -51,12 +51,12 @@ Send data to DataCastle.
   * `errors` (Array of Objects) - Will be present if the status code >= 400. e.g. `[{message: 'something went wrong'}]`
 
 ```js
-let datacastle, promise, data
-datacastle = new DataCastle('abc123ABC123abc123abc123abc12345')
+let pageclip, promise, data
+pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
 
 // Send one item
 data = {some: 'data'}
-promise = datacastle.send(data).then((response) => {
+promise = pageclip.send(data).then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'default'
@@ -66,7 +66,7 @@ promise = datacastle.send(data).then((response) => {
 
 // Send multiple items
 data = [{some: 'data'}, {some: 'otherdata'}]
-promise = datacastle.send(data).then((response) => {
+promise = pageclip.send(data).then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'default'
@@ -76,7 +76,7 @@ promise = datacastle.send(data).then((response) => {
 
 // Send one item to a named bucket
 data = {email: 'john@omgunicorns.com'}
-promise = datacastle.send('mailinglist', data).then((response) => {
+promise = pageclip.send('mailinglist', data).then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'mailinglist'
@@ -85,9 +85,9 @@ promise = datacastle.send('mailinglist', data).then((response) => {
 })
 ```
 
-### DataCastle::fetch([bucketName])
+### PageClip::fetch([bucketName])
 
-Retrieve your data from DataCastle.
+Retrieve your data from PageClip.
 
 * `bucketName` (String; _optional_; default: 'default') - bucket from which you want to fetch data.
 * Returns a `Promise` with `Object` payload
@@ -97,11 +97,11 @@ Retrieve your data from DataCastle.
   * `errors` (Array of Objects) - Will be present if the status code >= 400. e.g. `[{message: 'something went wrong'}]`
 
 ```js
-let datacastle, promise
-datacastle = new DataCastle('abc123ABC123abc123abc123abc12345')
+let pageclip, promise
+pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
 
 // Fetch items from the default bucket
-promise = datacastle.fetch().then((response) => {
+promise = pageclip.fetch().then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'default'
@@ -110,7 +110,7 @@ promise = datacastle.fetch().then((response) => {
 })
 
 // Fetch items from a named bucket
-promise = datacastle.fetch('mailinglist').then((response) => {
+promise = pageclip.fetch('mailinglist').then((response) => {
   console.log(
     response.status, // 200
     response.bucket, // 'mailinglist'

@@ -6,9 +6,9 @@ const promisify = require('es6-promisify')
 const request = promisify(require('request'), {multiArgs: true})
 const clientVersion = require('../package.json').version
 
-const DefaultOptions = {baseURL: 'https://datacastle.com'}
+const DefaultOptions = {baseURL: 'https://pageclip.com'}
 
-class DataCastle {
+class PageClip {
   constructor (token, options) {
     this._token = validateToken(token)
     this._base64Token = Base64.encode(`${token}:`)
@@ -62,7 +62,7 @@ class DataCastle {
       'X-REQMETHOD': 'api-client',
       'X-REQTRANSPORT': 'api-client',
       'Accept': 'application/json',
-      'User-Agent': `datacastle.js v${clientVersion}`,
+      'User-Agent': `pageclip.js v${clientVersion}`,
       'Content-Type': 'application/json',
       'Authorization': `Basic ${this._base64Token}`
     }
@@ -81,4 +81,4 @@ function validateBucketName (bucketName) {
   return bucketName
 }
 
-module.exports = DataCastle
+module.exports = PageClip

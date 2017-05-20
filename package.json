@@ -1,18 +1,19 @@
 {
-  "name": "datacastle",
+  "name": "pageclip",
   "version": "1.0.0",
-  "description": "JS Datacastle API client",
+  "description": "JS PageClip API client",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require test/environment.js test/*.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benogle/node-datacastle"
+    "url": "git+https://github.com/benogle/node-pageclip"
   },
   "keywords": [
-    "datacastle",
-    "form"
+    "pageclip",
+    "form",
+    "static"
   ],
   "author": "Ben Ogle",
   "license": "MIT",
