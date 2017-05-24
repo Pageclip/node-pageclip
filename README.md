@@ -98,7 +98,7 @@ Retrieve your data from PageClip. At this time, it returns all items in the buck
 
 ```js
 let pageclip, promise
-pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
+pageclip = new PageClip('api_abc123ABC123abc123abc123abc12345')
 
 // Fetch items from the default bucket
 promise = pageclip.fetch().then((response) => {

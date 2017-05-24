@@ -9,7 +9,7 @@ describe("PageClip.js", function () {
   beforeEach(function () {
     server = new MockServer()
     server.listen()
-    pageclip = new PageClip('abc123ABC123abc123abc123abc12345', {baseURL: server.getUrl()})
+    pageclip = new PageClip('api_abc123ABC123abc123abc123abc12345', {baseURL: server.getUrl()})
   })
 
   afterEach(function () {

@@ -69,7 +69,7 @@ class PageClip {
   }
 }
 
-const APIKeyRegex = /^[a-z0-9]{32}$/i
+const APIKeyRegex = /^api_[a-z0-9]{32}$/i
 function validateToken (token) {
   if (!APIKeyRegex.test(token)) throw new Error('API token not valid!')
   return token
