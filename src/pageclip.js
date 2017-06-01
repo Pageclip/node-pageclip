@@ -8,7 +8,7 @@ const clientVersion = require('../package.json').version
 
 const DefaultOptions = {baseURL: 'https://pageclip.com'}
 
-class PageClip {
+class Pageclip {
   constructor (token, options) {
     this._token = validateToken(token)
     this._base64Token = Base64.encode(`${token}:`)
@@ -81,4 +81,4 @@ function validateBucketName (bucketName) {
   return bucketName
 }
 
-module.exports = PageClip
+module.exports = Pageclip

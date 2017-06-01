@@ -1,7 +1,7 @@
 {
   "name": "pageclip",
   "version": "1.0.0",
-  "description": "JS PageClip API client",
+  "description": "JS Pageclip API client",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require test/environment.js test/*.test.js"

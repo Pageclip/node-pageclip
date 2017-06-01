@@ -1,15 +1,15 @@
 'use strict'
 
-const PageClip = require('pageclip')
+const Pageclip = require('pageclip')
 const MockServer = require('./mock-server')
 const clientVersion = require('../package.json').version
 
-describe("PageClip.js", function () {
+describe("Pageclip.js", function () {
   let server, pageclip
   beforeEach(function () {
     server = new MockServer()
     server.listen()
-    pageclip = new PageClip('api_abc123ABC123abc123abc123abc12345', {baseURL: server.getUrl()})
+    pageclip = new Pageclip('api_abc123ABC123abc123abc123abc12345', {baseURL: server.getUrl()})
   })
 
   afterEach(function () {
@@ -18,7 +18,7 @@ describe("PageClip.js", function () {
 
   describe("token validation", function () {
     it("throws when token is invalid", function () {
-      let fn = () => new PageClip('not valid')
+      let fn = () => new Pageclip('not valid')
       expect(fn).to.throw()
     })
   })

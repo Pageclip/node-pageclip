@@ -1,6 +1,6 @@
 # node-pageclip
 
-This is the official node.js API client for [PageClip](https://pageclip.co).
+This is the official node.js API client for [Pageclip](https://pageclip.co).
 
 ## Usage
 
@@ -11,10 +11,10 @@ npm install --save pageclip
 Basic usage:
 
 ```js
-const PageClip = require('pageclip')
-let pageclip = new PageClip(yourAPIKey)
+const Pageclip = require('pageclip')
+let pageclip = new Pageclip(yourAPIKey)
 
-// Send an item up to PageClip
+// Send an item up to Pageclip
 pageclip.send({some: 'data'}).then((response) => {
   console.log(response.status, response.data) // => 200, [{payload: {...}}]
 }).then(() => {
@@ -27,20 +27,20 @@ pageclip.send({some: 'data'}).then((response) => {
 
 ## API
 
-### PageClip(apiKey)
+### Pageclip(apiKey)
 
-Create a PageClip Object.
+Create a Pageclip Object.
 
-* `apiKey` (String) - found in the web interface of PageClip. Note that `apiKey` must be the private API key. Your public siteKey will not work!
+* `apiKey` (String) - found in the web interface of Pageclip. Note that `apiKey` must be the private API key. Your public siteKey will not work!
 
 ```js
-const PageClip = require('pageclip')
-let pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
+const Pageclip = require('pageclip')
+let pageclip = new Pageclip('abc123ABC123abc123abc123abc12345')
 ```
 
-### PageClip::send([bucketName], data)
+### Pageclip::send([bucketName], data)
 
-Send data to PageClip.
+Send data to Pageclip.
 
 * `bucketName` (String; _optional_; default: 'default') - bucket to which you want to attach `data`.
 * `data` (Object or Array) - data you want to send up. When `Object` it will treat it as a single Item. If `Array`, it will treat each entry as an Item.
@@ -52,7 +52,7 @@ Send data to PageClip.
 
 ```js
 let pageclip, promise, data
-pageclip = new PageClip('abc123ABC123abc123abc123abc12345')
+pageclip = new Pageclip('abc123ABC123abc123abc123abc12345')
 
 // Send one item
 data = {some: 'data'}
@@ -85,9 +85,9 @@ promise = pageclip.send('mailinglist', data).then((response) => {
 })
 ```
 
-### PageClip::fetch([bucketName])
+### Pageclip::fetch([bucketName])
 
-Retrieve your data from PageClip. At this time, it returns all items in the bucket&mdash;there is no pagination or slicing.
+Retrieve your data from Pageclip. At this time, it returns all items in the bucket&mdash;there is no pagination or slicing.
 
 * `bucketName` (String; _optional_; default: 'default') - bucket from which you want to fetch data.
 * Returns a `Promise` with `Object` payload
@@ -98,7 +98,7 @@ Retrieve your data from PageClip. At this time, it returns all items in the buck
 
 ```js
 let pageclip, promise
-pageclip = new PageClip('api_abc123ABC123abc123abc123abc12345')
+pageclip = new Pageclip('api_abc123ABC123abc123abc123abc12345')
 
 // Fetch items from the default bucket
 promise = pageclip.fetch().then((response) => {
