@@ -41,7 +41,11 @@ class Pageclip {
     return request(options).then((result) => {
       let message = result[0]
       let response = result[1]
-      response.status = message.statusCode
+      if (typeof(response) === 'string') {
+        response = {errors: [{message: response}], status: message.statusCode}
+      } else {
+        response.status = message.statusCode
+      }
       return response
     })
   }
