@@ -38,15 +38,15 @@ const Pageclip = require('pageclip')
 let pageclip = new Pageclip('abc123ABC123abc123abc123abc12345')
 ```
 
-### Pageclip::send([bucketName], data)
+### Pageclip::send([formName], data)
 
 Send data to Pageclip.
 
-* `bucketName` (String; _optional_; default: 'default') - bucket to which you want to attach `data`.
+* `formName` (String; _optional_; default: 'default') - form to which you want to attach `data`.
 * `data` (Object or Array) - data you want to send up. When `Object` it will treat it as a single Item. If `Array`, it will treat each entry as an Item.
 * Returns a `Promise` with `Object` payload
   * `status` (Integer) - HTTP status code
-  * `bucket` (String) - bucket name
+  * `form` (String) - form name
   * `data` (Array of [Items](#items)) - Returns all items that were saved. See [Items](#items)
   * `errors` (Array of Objects) - Will be present if `status >= 400`. See [Errors](#errors)
 
@@ -59,7 +59,7 @@ data = {some: 'data'}
 promise = pageclip.send(data).then((response) => {
   console.log(
     response.status, // 200
-    response.bucket, // 'default'
+    response.form, // 'default'
     response.data    // [Item({some: 'data'})]
   )
 })
@@ -69,51 +69,51 @@ data = [{some: 'data'}, {some: 'otherdata'}]
 promise = pageclip.send(data).then((response) => {
   console.log(
     response.status, // 200
-    response.bucket, // 'default'
+    response.form, // 'default'
     response.data    // [Item({some: 'data'}), Item({some: 'otherdata'})]
   )
 })
 
-// Send one item to a named bucket
+// Send one item to a named form
 data = {email: 'john@omgunicorns.com'}
 promise = pageclip.send('mailinglist', data).then((response) => {
   console.log(
     response.status, // 200
-    response.bucket, // 'mailinglist'
+    response.form, // 'mailinglist'
     response.data    // [Item({email: 'john@omgunicorns.com'})]
   )
 })
 ```
 
-### Pageclip::fetch([bucketName])
+### Pageclip::fetch([formName])
 
-Retrieve your data from Pageclip. At this time, it returns all items in the bucket&mdash;there is no pagination or slicing.
+Retrieve your data from Pageclip. At this time, it returns all items in the form&mdash;there is no pagination or slicing.
 
-* `bucketName` (String; _optional_; default: 'default') - bucket from which you want to fetch data.
+* `formName` (String; _optional_; default: 'default') - form from which you want to fetch data.
 * Returns a `Promise` with `Object` payload
   * `status` (Integer) - HTTP status code
-  * `bucket` (String) - bucket name
-  * `data` (Array of [Items](#items)) - All Items in the bucket. See [Items](#items)
+  * `form` (String) - form name
+  * `data` (Array of [Items](#items)) - All Items in the form. See [Items](#items)
   * `errors` (Array of Objects) - Will be present if `status >= 400`. See [Errors](#errors)
 
 ```js
 let pageclip, promise
 pageclip = new Pageclip('api_abc123ABC123abc123abc123abc12345')
 
-// Fetch items from the default bucket
+// Fetch items from the default form
 promise = pageclip.fetch().then((response) => {
   console.log(
     response.status, // 200
-    response.bucket, // 'default'
+    response.form, // 'default'
     response.data    // [Item]
   )
 })
 
-// Fetch items from a named bucket
+// Fetch items from a named form
 promise = pageclip.fetch('mailinglist').then((response) => {
   console.log(
     response.status, // 200
-    response.bucket, // 'mailinglist'
+    response.form, // 'mailinglist'
     response.data    // [Item, Item]
   )
 })
