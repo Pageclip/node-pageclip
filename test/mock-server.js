@@ -50,11 +50,11 @@ let Routes = {
   }
 }
 
-function failData (bucket, req, res) {
+function failData (form, req, res) {
   getBody(req).then((body) => {
     let out = {errors: [{message: 'nope'}], req: {
       body,
-      bucket,
+      form,
       method: req.method,
       headers: req.headers
     }}
@@ -63,11 +63,11 @@ function failData (bucket, req, res) {
   })
 }
 
-function putData (bucket, req, res) {
+function putData (form, req, res) {
   getBody(req).then((body) => {
-    let out = {data: 'ok', bucket, req: {
+    let out = {data: 'ok', form, req: {
       body,
-      bucket,
+      form,
       method: req.method,
       headers: req.headers
     }}
@@ -76,16 +76,16 @@ function putData (bucket, req, res) {
   })
 }
 
-function getData (bucket, req, res) {
+function getData (form, req, res) {
   let items = [
     {thing: 1},
     {thing: 2}
   ]
 
   getBody(req).then((body) => {
-    let out = {data: items, bucket, req: {
+    let out = {data: items, form, req: {
       body,
-      bucket,
+      form,
       method: req.method,
       headers: req.headers
     }}

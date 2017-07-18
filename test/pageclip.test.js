@@ -24,11 +24,11 @@ describe("Pageclip.js", function () {
   })
 
   describe("::fetch()", function () {
-    it("returns the data for default bucket when no bucket specified", function () {
+    it("returns the data for default form when no form specified", function () {
       return pageclip.fetch().then((res) => {
         expect(res.status).to.equal(200)
         expect(res.data).to.have.length(2)
-        expect(res.bucket).to.equal('default')
+        expect(res.form).to.equal('default')
 
         expect(res.req.method).to.equal('GET')
         expect(res.req.headers['authorization']).to.contain('Basic ')
@@ -38,11 +38,11 @@ describe("Pageclip.js", function () {
       })
     })
 
-    it("returns the data for specified bucket", function () {
+    it("returns the data for specified form", function () {
       return pageclip.fetch('abucket').then((res) => {
         expect(res.status).to.equal(200)
         expect(res.data).to.have.length(2)
-        expect(res.bucket).to.equal('abucket')
+        expect(res.form).to.equal('abucket')
       })
     })
 
@@ -61,12 +61,12 @@ describe("Pageclip.js", function () {
 
   describe("::send()", function () {
     let data
-    it("sends data for default bucket when none specified", function () {
+    it("sends data for default form when none specified", function () {
       data = {things: 'stuff'}
       return pageclip.send(data).then((res) => {
         expect(res.status).to.equal(200)
         expect(res.data).to.equal('ok')
-        expect(res.bucket).to.equal('default')
+        expect(res.form).to.equal('default')
 
         expect(res.req.body).to.eql(data)
 
@@ -78,12 +78,12 @@ describe("Pageclip.js", function () {
       })
     })
 
-    it("sends data to the specified bucket", function () {
+    it("sends data to the specified form", function () {
       data = {things: 'stuff'}
       return pageclip.send('abucket', data).then((res) => {
         expect(res.status).to.equal(200)
         expect(res.data).to.equal('ok')
-        expect(res.bucket).to.equal('abucket')
+        expect(res.form).to.equal('abucket')
         expect(res.req.body).to.eql(data)
         expect(res.req.method).to.equal('PUT')
       })
