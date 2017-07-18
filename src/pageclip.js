@@ -65,7 +65,7 @@ class Pageclip {
     return {
       'X-REQMETHOD': 'api-client',
       'X-REQTRANSPORT': 'api-client',
-      'Accept': 'application/json',
+      'Accept': 'application/vnd.pageclip.v1+json',
       'User-Agent': `pageclip.js v${clientVersion}`,
       'Content-Type': 'application/json',
       'Authorization': `Basic ${this._base64Token}`
