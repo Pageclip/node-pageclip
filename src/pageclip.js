@@ -6,7 +6,7 @@ const promisify = require('es6-promisify')
 const request = promisify(require('request'), {multiArgs: true})
 const clientVersion = require('../package.json').version
 
-const DefaultOptions = {baseURL: 'https://pageclip.com'}
+const DefaultOptions = {baseURL: 'https://api.pageclip.co'}
 
 class Pageclip {
   constructor (token, options) {
