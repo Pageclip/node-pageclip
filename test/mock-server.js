@@ -27,24 +27,24 @@ module.exports = class MockServer {
 
 let Routes = {
   put: {
-    '/api/data/default': function (req, res) {
+    '/data/default': function (req, res) {
       putData('default', req, res)
     },
-    '/api/data/abucket': function (req, res) {
+    '/data/abucket': function (req, res) {
       putData('abucket', req, res)
     },
-    '/api/data/fail': function (req, res) {
+    '/data/fail': function (req, res) {
       failData('fail', req, res)
     }
   },
   get: {
-    '/api/data/default': function (req, res) {
+    '/data/default': function (req, res) {
       getData('default', req, res)
     },
-    '/api/data/abucket': function (req, res) {
+    '/data/abucket': function (req, res) {
       getData('abucket', req, res)
     },
-    '/api/data/fail': function (req, res) {
+    '/data/fail': function (req, res) {
       failData('fail', req, res)
     }
   }
