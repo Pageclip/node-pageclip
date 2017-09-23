@@ -18,7 +18,7 @@ class Pageclip {
   // Returns all items
   fetch (bucketName) {
     bucketName = this._getBucketName(bucketName)
-    return this._request('GET', `/api/data/${bucketName}`)
+    return this._request('GET', `/data/${bucketName}`)
   }
 
   // Send data
@@ -28,7 +28,7 @@ class Pageclip {
       bucketName = null
     }
     bucketName = this._getBucketName(bucketName)
-    return this._request('PUT', `/api/data/${bucketName}`, data)
+    return this._request('PUT', `/data/${bucketName}`, data)
   }
 
   _getBucketName (bucketName) {
